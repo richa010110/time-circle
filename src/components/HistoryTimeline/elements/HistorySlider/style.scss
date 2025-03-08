@@ -1,0 +1,138 @@
+@use '@styles/mixin' as *;
+
+.history-slider {
+	position: relative;
+	@include fluid-value(
+		(
+			'padding-bottom': (
+				'min': 0.875,
+				'max': 6.5,
+			),
+		),
+		20,
+		90
+	);
+
+	@include max-md {
+		display: flex;
+		flex-direction: column;
+		gap: 4.875rem;
+	}
+
+	&__row {
+		display: flex;
+		align-items: center;
+		gap: 1.25rem;
+		transition: opacity 0.5s ease, transform 0.5s ease;
+
+		@include min-md {
+			padding: 0 1.25rem;
+		}
+
+		&--exiting {
+			opacity: 0;
+		}
+
+		&--entering {
+			opacity: 0;
+			animation: slideIn 0.5s ease forwards;
+		}
+
+		&--stable {
+			opacity: 1;
+		}
+
+		@keyframes slideIn {
+			from {
+				opacity: 0;
+			}
+			to {
+				opacity: 1;
+			}
+		}
+	}
+	&__slide {
+		display: flex;
+		flex-direction: column;
+		gap: 0.938rem;
+
+		&-year {
+			font-family: var(--font-bebas-neue);
+			line-height: 1.2;
+			color: var(--blue-100);
+
+			@include fluid-value(
+				(
+					'font-size': (
+						'min': 1,
+						'max': 1.563,
+					),
+				),
+				20,
+				90
+			);
+		}
+		&-text {
+			line-height: 1.45;
+			color: var(--blue-200);
+
+			@include fluid-value(
+				(
+					'font-size': (
+						'min': 0.875,
+						'max': 1.25,
+					),
+				),
+				20,
+				90
+			);
+		}
+	}
+
+	& .swiper-button {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex: 0 0 auto;
+		width: 2.5rem;
+		height: 2.5rem;
+		background-color: white;
+		border-radius: 50%;
+		box-shadow: 0 0 15 0 rgba(var(--blue-100), 0.1);
+		transition: 0.2s ease-in-out;
+		cursor: pointer;
+
+		&-disabled {
+			opacity: 0;
+			visibility: hidden;
+		}
+	}
+
+	&__footer {
+		position: relative;
+		display: flex;
+	}
+
+	& .swiper-pagination {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.625rem;
+
+		&-bullet {
+			width: 0.375rem;
+			height: 0.375rem;
+			border-radius: 50%;
+			background-color: var(--blue-200);
+			opacity: 0.4;
+			transition: 0.2s ease-in-out;
+
+			&-active {
+				opacity: 1;
+			}
+		}
+	}
+}

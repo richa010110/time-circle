@@ -1,0 +1,28 @@
+### Node.js ###
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+### Build Output ###
+dist/
+build/
+out/
+
+### TypeScript ###
+*.tsbuildinfo
+
+### Webpack ###
+.cache/
+
+### Editor and OS files ###
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+### Environment Variables ###
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
