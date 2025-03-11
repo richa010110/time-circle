@@ -139,9 +139,6 @@ const TimeSlider: FC = () => {
 			if (animateMovementRef.current) {
 				cancelAnimationFrame(animateMovementRef.current);
 			}
-			if (animateYearsRef.current) {
-				cancelAnimationFrame(animateYearsRef.current);
-			}
 
 			return;
 		}
@@ -176,10 +173,10 @@ const TimeSlider: FC = () => {
 	useEffect(() => {
 		const newRange = yearRanges[activeIndex];
 		setSelectedRange(newRange);
+		animateYears(startYear, newRange[0], endYear, newRange[1], 1000);
 
 		if (positions.length > 0) {
 			animateMovement(activeIndex, 1000);
-			animateYears(startYear, newRange[0], endYear, newRange[1], 1000);
 		}
 	}, [activeIndex]);
 

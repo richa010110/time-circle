@@ -73,7 +73,7 @@ module.exports = (env) => {
 			new HtmlWebpackPlugin({
 				template: './public/index.html',
 				minify: false,
-				publicPath: '/time-circle/',
+				publicPath: '/',
 			}),
 			new Dotenv(),
 			new MiniCssExtractPlugin({
